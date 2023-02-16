@@ -1,7 +1,5 @@
 # 📦 Desafío conocimientos Flexbox 📦
 
-## *Parte de la Especialización Frontend ONE-Alura Latam*
-
 En este proyecto se solicita realizar los ajustes necesarios utilizando la propiedad **flexbox** y sus diversos comportamientos para obtener un layout lo más semejante posible a los diseños proporcionados por el instructor.  
 <br>
 La estructura básica del HTMl y estilos iniciales son proporcionados dentro del proyecto.  
