@@ -1,0 +1,29 @@
+/* Estilos aplicados aplicando diseño "mobile first" */
+.headerPrincipal, .videoSobre-sobre { text-align: center; }
+
+.headerPrincipal-nav, .navmap-list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.headerPrincipal-nav-link-app { order: -1; }
+
+.videoSobre-video { 
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+ }
+
+ .videoSobre-button { width: 100%; }
+
+ .rodapePrincipal-patrocinadores-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+
+ .rodapePrincipal-contatoForm-fieldset {
+  display: flex;
+  justify-content: center;
+}
