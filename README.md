@@ -1,8 +1,7 @@
 # Proyectos de la formación Frontend por Alura Latam + ONE
 
-En este repositorio se encuentran información relevante y proyectos de la formación Frontend desarollada e impartida por Alura Latam y ONE (Oracle Next Education).  
+### En este repositorio se encuentran información relevante y proyectos de la formación Frontend, desarrollada e impartida por Alura Latam y ONE (Oracle Next Education).
 <br>
-
 Accede a cada sección en los siguientes enllaces:  
 <br>
 
