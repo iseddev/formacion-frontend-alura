@@ -27,3 +27,39 @@
   display: flex;
   justify-content: center;
 }
+
+/* Estilos que se aplicaran con una variante considerando un dispositivo con 768px de ancho como mínimo, con referencia específica a una "tablet" */
+@media screen and (min-width: 768px) {
+  .headerPrincipal-titulo { margin-bottom: 1rem; }
+  .headerPrincipal-nav {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .contenidoPrincipal-cursos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3%
+;  }
+
+  .contenidoPrincipal-cursos-link { width: 30%; }
+
+  .videoSobre .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .videoSobre-video { width: 80%; }
+
+  .rodapePrincipal-navMap-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .navmap-list-container { width: 50%; }
+
+  .rodapePrincipal-patrocinadores-list { margin-bottom: 1rem; }
+
+  .rodapePrincipal-contatoForm {text-align: center; }
+}
