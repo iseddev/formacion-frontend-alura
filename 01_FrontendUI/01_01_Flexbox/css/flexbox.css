@@ -31,6 +31,7 @@
 /* Estilos que se aplicaran con una variante considerando un dispositivo con 768px de ancho como mínimo, con referencia específica a una "tablet" */
 @media screen and (min-width: 768px) {
   .headerPrincipal-titulo { margin-bottom: 1rem; }
+
   .headerPrincipal-nav {
     flex-direction: row;
     justify-content: space-between;
@@ -62,4 +63,44 @@
   .rodapePrincipal-patrocinadores-list { margin-bottom: 1rem; }
 
   .rodapePrincipal-contatoForm {text-align: center; }
+}
+
+@media screen and (min-width: 1024px) {
+  .headerPrincipal-titulo { margin-bottom: 0; }
+
+  .headerPrincipal .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .headerPrincipal-nav-link-app { order: 0; }
+
+  .contenidoPrincipal-cursos-link { width: 20%; }
+
+  .videoSobre .container { flex-direction: row; }
+
+  .videoSobre-video, .videoSobre-sobre { width: 50%; }
+
+  .videoSobre-sobre {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .videoSobre-sobre-list { margin-bottom: 1.6rem; }
+
+  .navmap-list-container { width: 25%; }
+
+  .rodapePrincipal-patrocinadores .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .rodapePrincipal-patrocinadores-list {
+    width: 75%;
+    justify-content: space-around;
+  }
+
+  .rodapePrincipal-patrocinadores-list { margin: 0; }
+
+  .rodapePrincipal-contatoForm { width: 25%; }
 }
