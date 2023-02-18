@@ -1,4 +1,4 @@
-.head {
+.header {
     color: #FFFFFF;
 
     width: 100%;
@@ -12,25 +12,25 @@
     padding-top: .75rem;
     padding-bottom: .75rem;
 
-    border-bottom: 1px solid #103D4A;
+    border-bottom: 1px solid var(--border-cabecera-mobile);
 
     position: absolute;
 }
 
-.head__logo {
+.header__logo {
     margin-bottom: 1rem;
 }
 
-.head__navegacion {
+.header__navegacion {
     text-align: center;
 }
 
-.head__enlace {
+.header__enlace {
     font-size: 1.1rem;
 
     display: inline-block;
 
     margin-right: .7rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: .7rem;
     margin-left: .7rem;
 }
