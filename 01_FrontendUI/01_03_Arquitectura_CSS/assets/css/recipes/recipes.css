@@ -1,0 +1,10 @@
+.recipes {
+  padding: 5rem 0;
+  background-color: #DAB997;
+}
+
+.recipes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+}

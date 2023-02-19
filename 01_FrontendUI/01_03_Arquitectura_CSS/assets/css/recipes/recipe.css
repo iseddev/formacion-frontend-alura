@@ -1,0 +1,10 @@
+.recipe {
+  background-color: #FDFDFD;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .recipe { width: 31%; }
+}
