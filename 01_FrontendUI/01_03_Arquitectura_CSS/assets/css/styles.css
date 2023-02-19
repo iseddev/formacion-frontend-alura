@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0 auto
+}
+
+
+.header {
+  background-color: #F9F9F9;
+  width: 100%;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav--menu {
+  display: flex;
+  gap: .25rem;
+}
+
+.nav--link {
+  color: #808080;
+  padding: 1rem;
+}
+
+.nav--link:hover { text-decoration: underline; }
+
+.nav--link.is-active { color: #333333; }
