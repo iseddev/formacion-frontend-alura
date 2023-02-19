@@ -26,9 +26,22 @@ Curso práctico donde se aplicaran los conceptos de mejores prácticas para la c
 
 ## Metodologías CSS utilizadas en esta formación:
 
-###**BEM -> Bloque/Elemento/Modificador**
+###**Definición d clases**
+
+####**BEM -> Bloque/Elemento/Modificador**
 El objetivo es "dividir" la estructura HTML en bloques independientes mediante la implementación de clases CSS.  
 La nomenclatura sugerida es la siguiente:
 * **Bloque** => Elemento superior que define un "*componente*" individual que por sí mismo tiene un significado dentro de la estructura de maquetado HTML, por ejemplo, si definimos la clase `card`, obsevamos claramente que dicha clase hace referencia a un elemento que tiene la característica específica de ser una "tarjeta" por sí sola.
 * **Elemento** => Es una parte que deriva del *bloque* al que pertenece y que no puede usarse por separado, por ejemplo, podemos tener el elemento "*image*" del *bloque* "*card*", que definido en una clase CSS, quedaría de la siguiente manera: `card__image`
 * **Modificador** => Elemento que define una característica, estado o comportamiento específico ya sea de un *bloque* o de un *elemento*, por ejemplo, si tendremos 2 tipos de texto en nuestra *card*, podemos hacer lo siguiente en nuestro CSS: `card__text--big` y/o `card__text--small`
+
+###**Estructuración de archivos**
+
+####**ACSS - Atomic design CSS**
+
+*Niveles de Diseño*
+1. Átomos - "Componentes básicos de la materia". En las interfaces, son las etiquetas HTML
+2. Moléculas - "Grupos de átomos unidos entre sí". En las interfaces, son las agrupaciones de nuestras etiquetas (átomos) que permiten conformar un componente (molécula - *tiene la particularidad de tener una función adecuada por sí sola*)
+3. Organismos - Grupos de moléculas (componentes) unidas para formar un elemento más completo (sección) con funcionalidades relativamente más complejas
+4. Template (plantilla) - Grupos de organismos (secciones) para formar páginas
+5. Páginas - Instancias **específicas** de templates (plantillas). aquí es donde se prueba la efectividad del sistema de diseño, es decir, el producto final
