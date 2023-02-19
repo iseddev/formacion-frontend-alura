@@ -5,29 +5,3 @@
   padding-right: 1rem;
   margin: 0 auto
 }
-
-
-.header {
-  background-color: #F9F9F9;
-  width: 100%;
-}
-
-.header__navigation {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.menu__list {
-  display: flex;
-  gap: .25rem;
-}
-
-.menu__link {
-  color: #808080;
-  padding: 1rem;
-}
-
-.menu__link:hover { text-decoration: underline; }
-
-.menu__link.is-active { color: #333333; }

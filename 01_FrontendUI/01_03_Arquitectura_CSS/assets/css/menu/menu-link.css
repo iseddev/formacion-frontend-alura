@@ -1,0 +1,8 @@
+.menu__link {
+  color: #808080;
+  padding: 1rem;
+}
+
+.menu__link:hover { text-decoration: underline; }
+
+.menu__link.is-active { color: #333333; }
