@@ -26,18 +26,18 @@ Curso práctico donde se aplicaran los conceptos de mejores prácticas para la c
 
 ## Metodologías CSS utilizadas en esta formación:
 
-###**Definición d clases**
+### **Definición de clases**
 
-####**BEM -> Bloque/Elemento/Modificador**
+#### **BEM -> Bloque/Elemento/Modificador**
 El objetivo es "dividir" la estructura HTML en bloques independientes mediante la implementación de clases CSS.  
 La nomenclatura sugerida es la siguiente:
 * **Bloque** => Elemento superior que define un "*componente*" individual que por sí mismo tiene un significado dentro de la estructura de maquetado HTML, por ejemplo, si definimos la clase `card`, obsevamos claramente que dicha clase hace referencia a un elemento que tiene la característica específica de ser una "tarjeta" por sí sola.
 * **Elemento** => Es una parte que deriva del *bloque* al que pertenece y que no puede usarse por separado, por ejemplo, podemos tener el elemento "*image*" del *bloque* "*card*", que definido en una clase CSS, quedaría de la siguiente manera: `card__image`
 * **Modificador** => Elemento que define una característica, estado o comportamiento específico ya sea de un *bloque* o de un *elemento*, por ejemplo, si tendremos 2 tipos de texto en nuestra *card*, podemos hacer lo siguiente en nuestro CSS: `card__text--big` y/o `card__text--small`
 
-###**Estructuración de archivos**
+### **Estructuración de archivos**
 
-####**ACSS - Atomic design CSS**
+#### **ACSS - Atomic design CSS**
 
 *Niveles de Diseño*
 1. Átomos - "Componentes básicos de la materia". En las interfaces, son las etiquetas HTML
