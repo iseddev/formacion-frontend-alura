@@ -8,7 +8,7 @@
   <!-- Fonts from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/reset.css">
-  <link rel="stylesheet" href="./css/head.css">
+  <link rel="stylesheet" href="./css/header.css">
   <link rel="stylesheet" href="./css/llamada.css">
   <link rel="stylesheet" href="./css/bases.css">
   <link rel="stylesheet" href="./css/destacados.css">
@@ -35,7 +35,7 @@
     </nav>
   </header>
   <main>
-    <section class="container llamada">
+    <section class="llamada container">
       <h1 class="llamada__titulo">Aplicaciones a la medida</h1>
       <p class="llamada__texto">Apeperia es una empresa emergente con una manera inovadora de comprar y crear aplicaciones móviles y web.</p>
       <a class="boton llamada__boton" href="#">Conozca los planes</a>
@@ -83,7 +83,7 @@
         En Apeperia firmas nuestro servicio la manutención ya se incluye en el servicio. 
         De esa manera no te preocupes con la actualización, es por cuenta de nosotros.
         </p>
-        <p class="sobre_nosotros__texto sobre-nosotros__texto--destacado sobre-nosotros__texto--division">
+        <p class="sobre_nosotros__texto sobre_nosotros__texto--destacado sobre_nosotros__texto--division">
         ¡Tenemos un equipo especializado y exclusivo para proyectos increíbles!
         </p>
         <ul class="sobre_nosotros__plataformas">
@@ -94,6 +94,7 @@
       </ul>
       <p class="sobre_nosotros__texto">Desarrollamos aplicaciones para todas las plataformas</p>
       </div>
+      <img src="./img/sobre-apeperia.png" alt="Imagen sobre apeperis" class="">
     </section>
     <section class="planes container">
       <h2 class="planes__titulo">Planes</h2>
@@ -137,17 +138,21 @@
     </section>
     <section class="institucional container">
       <h2 class="institucional__titulo">Institucional</h2>
-      <p class="institucional__descripcion">Un poco más sobre Apeperia</p>
-      <address class="institucional__direccion">
-        Calle Vergueiro, 3185<br>Villa Mariana, São Paulo
-        <article class="institucional__contacto">
-          <p>
-            <a href="#" class="institucional__contacto-telefono">+55 11 55712751</a> o 
-            <a href="#" class="institucional__contacto-email">contato@apeperia.com</a>
-          </p>
-        </article>
-      </address>
-      <video src="./img/formacion-java.mp4" class="institucional__video" controls></video>
+      <div class="institucional__contenido">
+        <div class="institucional__informaciones">
+          <p class="institucional__descripcion">Un poco más sobre Apeperia</p>
+          <address class="institucional__direccion">
+            Calle Vergueiro, 3185<br>Villa Mariana, São Paulo
+            <article class="institucional__contacto">
+              <p>
+                <a href="#" class="institucional__contacto-telefono">+55 11 55712751</a> o 
+                <a href="#" class="institucional__contacto-email">contato@apeperia.com</a>
+              </p>
+            </article>
+          </address>
+        </div>
+        <video src="./img/formacion-java.mp4" class="institucional__video" controls></video>
+      </div>
     </section>
     <footer class="footer container">
       <img src="./img/logo-apeperia.svg" alt="Logo apeperia" class="footer__logo">
