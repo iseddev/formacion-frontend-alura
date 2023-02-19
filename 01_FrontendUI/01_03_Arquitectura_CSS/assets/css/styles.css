@@ -12,22 +12,22 @@
   width: 100%;
 }
 
-.main-nav {
+.header__navigation {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.nav--menu {
+.menu__list {
   display: flex;
   gap: .25rem;
 }
 
-.nav--link {
+.menu__link {
   color: #808080;
   padding: 1rem;
 }
 
-.nav--link:hover { text-decoration: underline; }
+.menu__link:hover { text-decoration: underline; }
 
-.nav--link.is-active { color: #333333; }
+.menu__link.is-active { color: #333333; }
