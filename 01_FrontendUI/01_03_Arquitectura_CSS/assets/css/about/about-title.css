@@ -1,7 +1,6 @@
 .about__title {
+  color: #DA2B1F;
   font-family: "Pacifico", cursive;
   font-size: 3.1875rem;
-  text-align: center;
-  color: #DA2B1F;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1rem;
 }

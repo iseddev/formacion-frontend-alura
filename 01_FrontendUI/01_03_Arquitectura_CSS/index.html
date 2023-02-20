@@ -15,9 +15,9 @@
   <link href="./assets/css/banner/banner.css" rel="stylesheet" />
   <link href="./assets/css/banner/banner-image.css" rel="stylesheet" />
   <link href="./assets/css/banner/banner-title.css" rel="stylesheet" />
-  <link href="./assets/css/about/about.css" rel="stylesheet" />
-  <link href="./assets/css/about/about-title.css" rel="stylesheet" />
-  <link href="./assets/css/about/about-description.css" rel="stylesheet" />
+  <link href="./assets/css/intro/intro.css" rel="stylesheet" />
+  <link href="./assets/css/intro/intro-title.css" rel="stylesheet" />
+  <link href="./assets/css/intro/intro-description.css" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/recipes/recipes.css">
   <link rel="stylesheet" href="./assets/css/recipes/recipe.css">
   <link rel="stylesheet" href="./assets/css/recipes/recipe-image.css">
@@ -25,6 +25,14 @@
   <link rel="stylesheet" href="./assets/css/recipes/recipe-title.css">
   <link rel="stylesheet" href="./assets/css/recipes/recipe-description.css">
   <link rel="stylesheet" href="./assets/css/recipes/recipe-button.css">
+  <link rel="stylesheet" href="./assets/css/about/about.css">
+  <link rel="stylesheet" href="./assets/css/about/about-title.css">
+  <link rel="stylesheet" href="./assets/css/about/about-description.css">
+  <link rel="stylesheet" href="./assets/css/team/team.css">
+  <link rel="stylesheet" href="./assets/css/team/member.css">
+  <link rel="stylesheet" href="./assets/css/team/member-image.css">
+  <link rel="stylesheet" href="./assets/css/team/member-name.css">
+  <link rel="stylesheet" href="./assets/css/team/member-role.css">
   <link href="./assets/css/styles.css" rel="stylesheet" />
 </head>
 <body>
@@ -42,15 +50,15 @@
     </div>
   </header>
   <section class="banner">
-    <img class="banner__image" src="./assets/img/banner.png" alt="Imagen banner">
+    <div class="banner__image"></div>
     <div class="container">
       <h2 class="banner__title">Reaproveche mejor los alimentos</h2>
     </div>
   </section>
-  <section class="about">
+  <section class="intro">
     <div class="container">
-      <h2 class="about__title"> Recetas para economizar y ganar salud</h2>
-      <p class="about__description">Nuestras recetas te ayudan a aprovechar mejor los alimentos, economizar, ganar tiempo y practicidad</p>
+      <h2 class="intro__title"> Recetas para economizar y ganar salud</h2>
+      <p class="intro__description">Nuestras recetas te ayudan a aprovechar mejor los alimentos, economizar, ganar tiempo y practicidad</p>
     </div>
   </section>
   <section class="recipes">
@@ -101,6 +109,29 @@
           <h4 class="recipe__title">Remolachas assadas</h4>
           <p class="recipe__description">Receta refrescante llena de vitaminas para tu desayuno.</p>
           <button class="recipe__button">Ver receta</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="about">
+    <div class="container">
+      <h3 class="about__title">Quienes somos</h3>
+      <p class="about__description">Conozca a la comunidad detrás de la iniciativa</p>
+      <div class="team">
+        <div class="member">
+          <div class="member__image member__image--roberta"></div>
+          <span class="member__name">Roberta</span>
+          <span class="member__role">Contenido</span>
+        </div>
+        <div class="member">
+          <div class="member__image member__image--marcela"></div>
+          <span class="member__name">Marcela</span>
+          <span class="member__role">Chef de cocina</span>
+        </div>
+        <div class="member">
+          <div class="member__image member__image--andrea"></div>
+          <span class="member__name">Andrea</span>
+          <span class="member__role">Pequeña Productora</span>
         </div>
       </div>
     </div>

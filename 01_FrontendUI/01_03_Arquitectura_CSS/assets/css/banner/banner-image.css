@@ -1,5 +1,12 @@
 .banner__image {
-  width: 100%;
-  height: calc(100vh - 4rem);
-  object-fit: cover;
+  position: absolute;
+  /* background-image: url("../../img/banner.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; */
+  background: url("../../img/banner.png") no-repeat center / cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
