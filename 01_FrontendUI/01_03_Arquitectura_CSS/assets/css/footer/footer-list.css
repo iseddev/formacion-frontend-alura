@@ -1,0 +1,4 @@
+.footer__list {
+  display: flex;
+  gap: 1.25rem
+}
