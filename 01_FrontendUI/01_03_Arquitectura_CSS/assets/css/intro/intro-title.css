@@ -1,7 +1,11 @@
 .intro__title {
   font-family: "Pacifico", cursive;
-  font-size: 3.1875rem;
+  font-size: 2rem;
   text-align: center;
   color: #DA2B1F;
   margin-bottom: 1.6rem;
+}
+
+@media screen and (min-width: 786px) {
+  .intro__title { font-size: 3.1875; }
 }

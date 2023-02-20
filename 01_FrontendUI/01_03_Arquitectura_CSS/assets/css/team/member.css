@@ -1,6 +1,21 @@
 .member {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 30%
+  align-items: center;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+@media screen and (min-width: 768px) {
+  .member {
+    justify-content: center;
+    margin-bottom: 0;
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .member {
+    width: 33%;
+  }
 }

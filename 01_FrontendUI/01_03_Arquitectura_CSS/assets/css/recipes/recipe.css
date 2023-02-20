@@ -5,6 +5,10 @@
   margin-bottom: 3rem;
 }
 
+@media screen and (min-width: 768px) {
+  .recipe { width: 48%; }
+}
+
 @media screen and (min-width: 1024px) {
   .recipe { width: 31%; }
 }

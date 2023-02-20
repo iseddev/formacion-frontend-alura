@@ -1,6 +1,10 @@
 .about__title {
   color: #DA2B1F;
   font-family: "Pacifico", cursive;
-  font-size: 3.1875rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .about__title { font-size: 3.1875rem; }
 }
