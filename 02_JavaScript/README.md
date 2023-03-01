@@ -5,4 +5,4 @@
 ### Contenido:
 
 1. [JavaScript: Primeros pasos con el lenguaje](02_01_PrimerosPasos)
-2. [JS en la web: Manipulación del DOM con JavaScript](02_02_ManipulacionDOM)
+2. [JS en la web: Manipulación del DOM con JavaScript](02_02_ManipulacionDelDOMConJavaScript)
