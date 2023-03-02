@@ -23,14 +23,17 @@
         <div class="title"><img src="./assets/rocket.svg" /></div>
         <div>
           <form action="">
+            <!-- Agregamos el data-attribute "data-form-input"  para el manejo con JS -->
             <input
-              type="text"
-              name="task"
-              placeholder="Nombre de la tarea"
-              class="inputForm"
-              autocomplete="off"
+            type="text"
+            name="task"
+            placeholder="Nombre de la tarea"
+            class="inputForm"
+            autocomplete="off"
+            data-form-input
             />
-            <button type="submit" class="btnCreate">
+            <!-- Agregamos el data-attribute "data-form-btn"  para el manejo con JS -->
+            <button type="submit" class="btnCreate" data-form-btn>
               Agregar <i class="fas fa-plus-circle"></i>
             </button>
           </form>
@@ -47,6 +50,6 @@
       </div>
     </main>
 
-    <script src=""></script>
+    <script src="scripts.js"></script>
   </body>
 </html>
