@@ -39,7 +39,7 @@ const createTask = e => {
   // Definimos el "template" o plantilla de cada elemento li que se irá agregando a la lista de tareas
   const templateTask = `
     <div>
-      <i class="far fa-check-square icon"></i>
+      ${checkIcon()}
       <span class="task">${taskContent}</span>
     </div>
     <i class="fas fa-trash-alt trashIcon icon"></i>
@@ -51,7 +51,25 @@ const createTask = e => {
   
   // Agregamos cada tarea creada por el usuario al elemento ul
   taskList.appendChild(taskItem)
+
+  // Otros métodos para la manipulación de nodos
+  // .insertBefore(parent, child)
+  // .replaceChild(oldChild, newChild)
+  // .removeChild(child)
 }
 
 // Inicializar un "listener" que esté "escuchando" un evento, en este caso, necesitamos escuchar el momento en que el usuario haga "click" sobre el botón para crear una nueva tarea, esto lo logramos con el método/función .addEventListener(), de la siguiente forma:
 dataFormBtn.addEventListener("click", createTask)
+
+// Fucnión para el manejo del estado de las tareas para manipular si estan on o finalizadas
+const checkIcon = () => {
+  // Creación del elemento i para el manejo del ícono de "check"
+  const $i = d.createElement("i")
+  // Agregar las clases correspondientes
+  $i.classList.add("far", "fa-check-square", "icon")
+
+  // Devolvemos el elemento creado
+  return $i
+}
+
+// La ejecución de éste código no nos mostrará de forma correcta los elementos creados hasta el momento, debido a que es necesario crear y añadir los elementos de forma dínámica y agregarlos dentro de la esructura HTML, Para eso, trabajeramos en un archivo nuevo, que llamaremos: tasks.js
