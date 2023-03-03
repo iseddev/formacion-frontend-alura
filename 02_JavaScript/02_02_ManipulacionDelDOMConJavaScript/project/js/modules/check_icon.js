@@ -1,7 +1,7 @@
 const d = document
 
 // Crear ícono check
-const createCheckIcon = () => {
+const handlingCheckTask = () => {
   const $i = d.createElement("i")
   $i.classList.add("far", "fa-check-square", "icon")
   
@@ -22,4 +22,4 @@ const updateCheckIcon = e => {
   checkIcon.classList.toggle("completeIcon")
 }
 
-export default createCheckIcon
+export default handlingCheckTask

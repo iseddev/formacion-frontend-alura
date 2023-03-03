@@ -1,7 +1,7 @@
 const d = document
 
 // Crear ícono trash
-const createTrashIcon = () => {
+const handlingDeleteTask = () => {
   const $i = d.createElement("i")
   $i.classList.add("fas", "fa-trash-alt", "trashIcon",  "icon")
 
@@ -18,4 +18,4 @@ const deleteTask = e => {
   parent.remove()
 }
 
-export default createTrashIcon
+export default handlingDeleteTask

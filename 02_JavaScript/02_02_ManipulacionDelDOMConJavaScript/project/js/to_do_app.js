@@ -1,5 +1,5 @@
-import createCheckIcon from "./modules/check_icon.js"
-import createTrashIcon from "./modules/trash_icon.js"
+import handlingCheckTask from "./modules/check_icon.js"
+import handlingDeleteTask from "./modules/trash_icon.js"
 import createSpan from "./modules/create_span.js"
 
 const d = document
@@ -15,9 +15,9 @@ const manageTask = e => {
 
   const $li = d.createElement("li")
   const $div = d.createElement("div")
-  const checkIcon = createCheckIcon()
+  const checkIcon = handlingCheckTask()
+  const deleteIcon = handlingDeleteTask()
   const $span = createSpan()
-  const trashIcon = createTrashIcon()
   
   let inputContent = formInput.value
   formInput.value = ""
@@ -28,7 +28,7 @@ const manageTask = e => {
   $div.appendChild(checkIcon)
   $div.appendChild($span)
   $li.appendChild($div)
-  $li.appendChild(trashIcon)
+  $li.appendChild(deleteIcon)
   $ul.appendChild($li)
 }
 
