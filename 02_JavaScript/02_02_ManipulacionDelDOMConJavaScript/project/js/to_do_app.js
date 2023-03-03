@@ -1,0 +1,35 @@
+import createCheckIcon from "./modules/check_icon.js"
+import createTrashIcon from "./modules/trash_icon.js"
+import createSpan from "./modules/create_span.js"
+
+const d = document
+
+const formBtn = d.querySelector("[data-form-btn]")
+
+const manageTask = e => {
+
+  e.preventDefault()
+
+  const formInput = d.querySelector("[data-form-input]")
+  const $ul = d.querySelector("[data-task-ul]")
+
+  const $li = d.createElement("li")
+  const $div = d.createElement("div")
+  const checkIcon = createCheckIcon()
+  const $span = createSpan()
+  const trashIcon = createTrashIcon()
+  
+  let inputContent = formInput.value
+  formInput.value = ""
+  
+  $li.classList.add("card")
+  $span.innerHTML = inputContent
+
+  $div.appendChild(checkIcon)
+  $div.appendChild($span)
+  $li.appendChild($div)
+  $li.appendChild(trashIcon)
+  $ul.appendChild($li)
+}
+
+formBtn.addEventListener("click", manageTask)
