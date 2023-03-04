@@ -56,7 +56,7 @@ pasamos a esto:
 ```js
 const paragraph = document.querySelector("[data-main-text]")
 ```
-En este caso hicimos uso del método `.querySelector()`, ya que accederemos al elemento cuyo elemento contenga la definición del parámetro pasado como valor, en este caso: `"[data-main-text]"`  
+En este caso hicimos uso del método `.querySelector()`, ya que accederemos al elemento cuyo valor contenga la definición del parámetro pasado, en este caso: `"[data-main-text]"`  
 <br>
 
 ---
