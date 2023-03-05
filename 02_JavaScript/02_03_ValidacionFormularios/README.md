@@ -1,7 +1,7 @@
-# Validación de formualrios con JavaScript
+# Validación de formularios con JavaScript
 
 ---
-## 01 - Tipos de *input*
+## 01 - Tipos de *input* y algunas validaciones
 
 En la gran mayoría de casos, al crear un formulario en HTML, vamos a requerir que el usuario ingrese información, por lo que haremos uso del elemento `input`. Este elemento tiene varias opciones para que HTML defina un *formato* específico a la información que el usuario está ingresando. Por ejemplo, para un texto simple (como puede ser nombre de usuario, nombre de empresa, etc) definimos el *input* como tipo `text` (*type* por defecto), esto lo podemos ver a continuación:
 ```html
@@ -27,11 +27,15 @@ El atributo `required` es un valor *boolean*, es decir, o es `true` o es `false`
 <br>
 
 ---
-## 02 - Validar datos (expresiones regulares - regex)
+## 02 - Validar datos
 
 Ahora que ya sabemos que dentro de un documento HTML existe una estructura jerárquica de todos los elementos que lo componen, vamos a ver como podemos acceder a ellos mediante el uso de JavaScript y validar que la información ingresada cumpla con determinados requisitos para asegurar la calidad de los datos ingresados.  
+<br>
 
-Por ejemplo, para el caso de las contraseñas, podemos crear un *patrón* definido para que el usuario ingrese sólo caractéres especificados. Para ello haremos uso de las ***expresiones regulares*** también conocidads como *regex* (de *regular expressions*). En el ejemplo de este tema, utilizaremos la siguiente expresión regular:  
+---
+### **Validación de un `input` tipo `password`** (expresiones regulares - regex)
+
+Para el caso de las contraseñas, podemos crear un *patrón* para que el usuario ingrese sólo caractéres especificos. Para ello haremos uso de las ***expresiones regulares*** también conocidads como *regex* (de *regular expressions*). En el ejemplo de este tema, utilizaremos la siguiente expresión regular:  
 ```
 ^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$
 ```
@@ -54,3 +58,40 @@ En general, esta regla define que la contraseña a ingresar debe contener al men
 ```
 Si pruebas este simple ejemplo, verás como si ingresas longitudes de caracteres inferiores a 6 o más de 12, y/o algún caracter dentro del patron, se mostrará un mensaje de error, el cual incluirá el texto definido en el atributo `title`.  
 
+Puedes profundizar un poco más sobre los patrones más utilizados de *expresiones regulares* el siguiente [enlace](https://regexr.com/)  
+<br>
+
+---
+### **Validación de un `input` tipo `date`** con JavaScript
+
+Siguiendo con el ejemplo de nuestro tema, vamos a validar que la fecha ingresada sea menor o igual a la fecha actual y que se determine si el usuario es mayor de edad, en este caso consideraremos que a partir de 18 años el usuario es mayor de edad. Ahora es turno de ver en acción a JavaScript, donde podremos definir nuestra lógica y validar la regla anterior (usuario debe tenr por lo menos 18 años).  
+
+Lo primero es considerar que haremos uso del *Objeto `Date`*, el cual será utilizado para el manejo de fechas (también se puede usar para el manejo de tiempos => hh:mm:ss:ms). Recordemos que el `input` utilizado es de tipo `date`, por lo que lo primero a considerar es que tenemos que tener acceso y almacenar en una variable el contenido que el usuario haya ingresado, para eso podemos hacerlo siguiente:
+
+```js
+const inputDate = document.querySelector("[data-input-date]")
+const userBirthDate = new Date(inputDate.value)
+const increasedBirthDate = new Date(
+  userBirthDate.getUTCFullYear() + 18,
+  userBirthDate.getUTCMonth(),
+  userBirthDate.getUTCDate()
+)
+const currentDate = new Date()
+let errorMessage = ""
+const isOlder = currentDate - increasedDirthDate >= 0
+if(!isOlder) {
+  errorMessage = "Para poder registrarte, debes tener al menos 18 años"
+}
+inputDate.setCustomValidity(errorMessage)
+```
+
+1. Capturamos el input de tipo date que tiene el data-attribute: `data-input-date`
+2. Generamos un formato de fecha mediante la instanciación del objeto Date, que le pasamos como argumento el contenido/valor del input previamente capturado
+3. Creamos un nuevo formato de fecha, agregándole 18 al año ingresado por el usuario con la finalidad de comparar con la fecha actual
+4. Creamos y almacenamos en `currentDate` la fecha actual
+5. Definimos una variable para establecer un mensaje de error en caso de que la edad del usuario no sea 18+ años, inicialmente *vacío*
+6. Validamos si la diferencia de la fecha actual con la fecha del usuario de nacimiento incrementada en 18 es mayor o igual a cero, si es así, quiere decir que el usuario tiene 18+ años, por lo contrario, el usuario no tienen 18+ años
+7. Validamos si el usuario es mayor de edad o no, en caso de que el usuario *no sea mayor de edad*, definimos el mensaje que se mostrará en pantalla indicando este detalle
+8. Asignamos un mensaje personalizado al input en cuestión mediante el método `.setCustomValidity(message)`  
+
+En los arcivos de la práctica, podrás ver una forma diferente de hacerlo este mismo proceso, además de validar que el usuario no ingrese fechas mayores a la fecha actual, puedes revisar los archivos de la práctica [aquí](./project/)  
