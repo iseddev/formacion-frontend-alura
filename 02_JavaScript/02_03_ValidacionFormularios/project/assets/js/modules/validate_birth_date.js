@@ -5,10 +5,10 @@ const inputDate = d.querySelector("[data-input-date]")
 
 // Creamos un listener para cuando el foco ya no se encuentre en el input
 inputDate.addEventListener("blur", e => {
-  validateBirthDate(e.target)
+  validateBirth(e.target)
 })
 
-const validateBirthDate = (inputDate) => {
+const validateBirth = (inputDate) => {
 
   // Obtenemos el contenido/valor del input y generamos un formato de fecha para su validación
   const userBirthDate = new Date(inputDate.value)

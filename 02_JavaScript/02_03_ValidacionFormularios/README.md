@@ -94,4 +94,20 @@ inputDate.setCustomValidity(errorMessage)
 7. Validamos si el usuario es mayor de edad o no, en caso de que el usuario *no sea mayor de edad*, definimos el mensaje que se mostrará en pantalla indicando este detalle
 8. Asignamos un mensaje personalizado al input en cuestión mediante el método `.setCustomValidity(message)`  
 
-En los arcivos de la práctica, podrás ver una forma diferente de hacerlo este mismo proceso, además de validar que el usuario no ingrese fechas mayores a la fecha actual, puedes revisar los archivos de la práctica [aquí](./project/)  
+En los archivos de la práctica, podrás ver como se aplica este proceso de una forma diferente con un `listener`, además de validar que el usuario no ingrese fechas mayores a la fecha actual, puedes revisar los archivos de la práctica [aquí](./project/)  
+<br>
+
+---
+### **Mensajes personalizados**
+
+Al momento de que un usario ingresa una información no válida en un `input` dependiendo de las restricciones que hayamos establecido, el nevagador mostrará un pequeño "*pop-up*" o mensaje temporal indicando de forma general el error detectado. La presentación de este mensaje puede variar entre navegadores, tanto en el propio mensajo como en la presentación o diseño, por ello, en la mayoria de ocasiones vamos a necesitar definir mensajes propios o personalizados para mostrar a nuestros usuarios en caso de que algún dato no cumpla con las restricciones definidas. Esto lo podemos ver en los dos ejercicios anteriores, donde establecimos un mensaje persnalizado que le indicaciones más precisas al usuario acerca de los errores encontrados en la información ingresada.  
+
+Para poder aplicar nuestros propios mensajes y estilos de presentación en un mensaje de error en nuestros inputs, podemos hacer uso de CSS y la lógica de programación denámica de JavaScript.  
+
+Pero antes de eso, vamos a ver una forma de determinar si un input tiene o no información válida. Para ello hay que realizar los siguientes pasos:
+1. Teniendo abierto tu navegador y posicionado en la pestaña en la aplicación de tu formulario en ejecución, pon el foco (*haz click*) en alguno de los input que tengas, sin mover el cursor del input seleccionado haz click derecho y en el menu contextual elige la opción `inspeccionar`, esto abrirá el inspector de elementos "*posicionado*" el input *seleccionado*
+2. Ahora haz click sobre la pestaña de `Console` o `Consola` del inspector de elementos, ejecuta lo siguiente en la consola: `$0`. Esto *capturará* el input mediante JavaScript
+3. En la misma consola, ahora ejecuta: `$0.validity`, esto dará como resultado el desplige de la información del objeto `ValidityState`, el cual contiene algunas propiedades del input seleccionado. Si despligas la información podrás ver cada una de las propiedades y valores del objeto `ValidityState` del input seleccioando. Las propiedades sobre las que nos interesa trabajar es sobre: `valid` y `valueMissing`, ambos son datos *booleanos* (en realidad todas las propiedades), que por sí mismo nos indican si el input tiene información válida (`valid`) o si el campo está vacío (`valueMissing`)
+4. Siguiendo con el ejemplo de esta práctica, vamos a trabajar sobre los inputs para saber si no estan vacíos o si la información ene ellos es válida y/o cumple con alguna restricción previamente definida.  
+
+Para una mejor distribución y legibildiad de código, se crearon archivos separados y se exportaron e importaron en los archivos necesarios haciendo uso de los *moódulos* de JavaScript. Esto lo puedes ver en el directorio de la prática de este tema [aquí](./project/).
