@@ -110,4 +110,13 @@ Pero antes de eso, vamos a ver una forma de determinar si un input tiene o no in
 3. En la misma consola, ahora ejecuta: `$0.validity`, esto dará como resultado el desplige de la información del objeto `ValidityState`, el cual contiene algunas propiedades del input seleccionado. Si despligas la información podrás ver cada una de las propiedades y valores del objeto `ValidityState` del input seleccioando. Las propiedades sobre las que nos interesa trabajar es sobre: `valid` y `valueMissing`, ambos son datos *booleanos* (en realidad todas las propiedades), que por sí mismo nos indican si el input tiene información válida (`valid`) o si el campo está vacío (`valueMissing`)
 4. Siguiendo con el ejemplo de esta práctica, vamos a trabajar sobre los inputs para saber si no estan vacíos o si la información ene ellos es válida y/o cumple con alguna restricción previamente definida.  
 
-Para una mejor distribución y legibildiad de código, se crearon archivos separados y se exportaron e importaron en los archivos necesarios haciendo uso de los *moódulos* de JavaScript. Esto lo puedes ver en el directorio de la prática de este tema [aquí](./project/).
+Para una mejor distribución y legibildiad de código, se crearon archivos separados y se exportaron e importaron en los archivos necesarios haciendo uso de los *moódulos* de JavaScript. Esto lo puedes ver en el directorio de la prática de este tema [aquí](./project/).  
+<br>
+
+---
+### **Validando números y textos**
+ Para los siguientes campos de nuestro formulario, vamos a establcer en el HTML, que cada input tenga la propiedad `required` y la propiedad `pattern` a la que le agregaremos unas restricciones con *expresiones regulares* para limitar los caracteres aceptado y su longitud.  
+
+ Por otro lado, vamos a agregar a nustro archivo `error_message.js` la lógica para validar los campos de teléfono, dirección, ciudad y estado.  
+ 
+ Nuevamente para ver los cambios hechos en nuestra práctica, puedes echarle un vistazo [aquí](./project/) a los archivos y ver lo que se aplicó para determinar las validaciones restantes de nuestro formualrio de registro.

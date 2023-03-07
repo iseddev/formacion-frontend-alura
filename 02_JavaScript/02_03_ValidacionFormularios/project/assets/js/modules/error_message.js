@@ -21,10 +21,22 @@ const errorMessages = {
     valueMissing: "Campo requerido, ingresa tu fecha de nacimiento",
     // customError: "Registro válido sólo si tienes 18 años o más",
   },
-  // phone: "temp",
-  // address: "temp",
-  // city: "temp",
-  // state: "temp",
+  phone: {
+    valueMissing: "Campo requerido, ingresa tu número telefónico",
+    patternMismatch: "El formato requerido es numérico y de 10 dígitos",
+  },
+  address: {
+    valueMissing: "Campo requerido, ingresa tu dirección de residencia",
+    patternMismatch: "Ingresa una dirección válida",
+  },
+  city: {
+    valueMissing: "Campo requerido, ingresa tu ciudad de residencia",
+    patternMismatch: "Ingresa un nombre de ciudad válido",
+  },
+  state: {
+    valueMissing: "Campo requerido, ingresa tu estado de residencia",
+    patternMismatch: "Ingresa un nombre de estado válido",
+  },
 }
 
 export const setErrorMessage = (inputType, input) => {
