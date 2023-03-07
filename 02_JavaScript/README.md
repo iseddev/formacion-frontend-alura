@@ -6,3 +6,4 @@
 
 1. [JavaScript: Primeros pasos con el lenguaje](02_01_PrimerosPasos)
 2. [JS en la web: Manipulación del DOM con JavaScript](02_02_ManipulacionDelDOMConJavaScript)
+3. [JS en la web: Validación de formularios y HTML5](02_03_ValidacionFormularios)
