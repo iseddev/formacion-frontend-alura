@@ -119,4 +119,6 @@ Para una mejor distribución y legibildiad de código, se crearon archivos separ
 
  Por otro lado, vamos a agregar a nustro archivo `error_message.js` la lógica para validar los campos de teléfono, dirección, ciudad y estado.  
  
- Nuevamente para ver los cambios hechos en nuestra práctica, puedes echarle un vistazo [aquí](./project/) a los archivos y ver lo que se aplicó para determinar las validaciones restantes de nuestro formualrio de registro.
+ Nuevamente para ver los cambios hechos en nuestra práctica, puedes echarle un vistazo [aquí](./project/) a los archivos y ver lo que se aplicó para determinar las validaciones restantes de nuestro formualrio de registro.  
+
+ Ingresa al proyecto en *vivo* [aquí](https://iseddev.github.io/formacion-frontend-alura/02_JavaScript/02_03_ValidacionFormularios/project/registro.html)
