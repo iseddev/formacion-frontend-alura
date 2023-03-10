@@ -215,10 +215,10 @@ class Account {
 ```
 Para un estudio más acertado, puedes acceder a la documentaciond de MDN [aquí](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Classes/Private_class_fields).
 
-### Métods de clase interactivos (retornando valores)
+### Métodos de clase interactivos (retornando valores)
 
 Hatas el momento, los métodos que hemos definidio en nuestra clase `Account` realizan su trabajo pero no devuelven nada, es decir, no sabemos lo que está ocurriendo. Para solucionar este comportamiento, podemos establecer instrucciones que al momento del llamado y ejecución de un método, este nos devuleva un valor, el cual puede diferir de programa en programa. Para nuestro caso, vamos a establecer que cada vez que se realice un depósito o retiro exitos, muestre el saldo final después de cada operación:
-````js
+```js
 class Account {
   // ...
   #balance // Definimos que balance es un atributo privado
@@ -245,19 +245,83 @@ class Account {
   }
 }
 ```
-...  
 <br>
 
 ---
 ## 03 - Modularizando el código
 
-...  
+### Exportación e importación de módulos
+
+Generalmente cuando ocupamos las *clases* para la POO, implementamos el uso de *módulos* para tener una estructura de archivo mejor organizada. Para ejemplificar este proceso, vamos a crear los archivos `Customer.js` y `Account.js`. Si lo observas, los nombres de los archivos son iguales a el nombre de las clases que creamos, siguiendo el mismo estándar de la estructura *UpperCamelCase*. Por otro lado, es recomendable (mas no obligatorio) ubicar estos archivos dentro de una carpeta que haga referencia a los archivos que contiene, una alternativa: `modules`  
+
+Ahora bien, cada uno de estos archivos que hemos creado, les solemos llamar *módulos*. Para su utilización es necesario el uso de *importaciones* y *exporaciones* de estos módulos para su utilización. Puedes revisar la estructura de archivos [aquí](./classes_modules/).  
+
+En cada archivo o módulo creado, debemos establecer que la las clases definidas van a ser *exportadas* para su uso desde el exterior, para ello hacemos uso de la siguiente estructura en cada archivo:
+```js
+export class Customer {
+  // ...
+}
+```
+y
+```js
+export class Account {
+  // ...
+}
+```
+Ahora que ya tenemos creados nuestros *módulos* y hemos especificado en cada archivo que serán exportados para uso esterno, vamos a *importarlos*. Vamos a hacerlo de la siguiente forma:
+```js
+import { Customer } from "./modules/Customer.js"
+import { Account } from "./modules/Account.js"
+```
+Es importante considerar que la *ruta* de nuestros módulos a importar es *relativa* a nuestro archivo donde estamos haciendo la importación, en este caso `index.js`, por ello es que se utiliza la notación `./path_to_module`, ya que `./` hace referencia a la ruta en la que se encuentra el archivo principal (index.js) y `path_to_module` es la ruta para acceder al módulo requerido. También notar que dentro de los paréntesis se coloca el nombre exacto con el que hemos creado nuestra clase, esto para mantener un estándar de buenas prácticas.  
+
+Ya que hemos importado correctamente nuestros *módulos* (clases), ahora podemos utilizar cada uno de sus atributos y métodos de acuerdo a nuestras necesidades. Pero ...  
+
+Pero, debido a que el uso de módulos (hasta estos momentos) no está estandarizado para su implementación en todos los navegadores, es necesario que se defina en la etiqueta `script` de nuestro archivo HTML la propiedad `type="module"` para hacerle saber a nuestro documento HTML que el archivo JS referecniado es un *módulo* (module).  
+
+Para el caso de la implementación mediante `Node`, se debe espcificar en el archivo `package.json` de nuestro proyecto, el atributo: `"type":"module"`  
+
+### Referenciación entre clases
+
+De acuerdo a la práctica que estamos realizando, ya definimos módulos por separado para `Customer` y para `Account`, pero nos hace falta hacer una referencia entre estos dos módulos, es decir, hacer relación entre cada cliente y una cuenta. Para ello, podemos definir dentro del módulo `Account` una propiedad que haga referencia a un cliente (`Customer`), por lo que vamos a crear el atributo `customer` y agregarlo al constructor de la siguiente manera:
+```js
+constructor() {
+  this.customer = null
+  // ...
+}
+```
+Observa que al atributo `this.customer` se le asigna el valor de `null`, esto para indicarle a JavaScript que este atributo va a ser un tipo de dato compuesto, específicamente un objeto.  
+
+### Agregar métodos interactivos
+
+Para este caso, vamos a simular que de una cuenta se realizará la transferencia a otra cuenta, para ello crearemos un nuevo método que llamaremos `transferFunds`. La estrcutura básica queda como sigue:
+```js
+transferFunds(amount, destination) {
+  this.withdrawal(amount)
+  destination.deposit(amount)
+}
+```
+Como reto, puedes agregar la lógica para validar que se haga el depósito a la cuenta destino sólo si la cuenta de retiro tiene el saldo suficiente para realizar la operación de transferencia.  
+
+### Parámetros por valor y por referencia
+
+Dentro de los métodos que definimos en nuestra clase `Account`, podemo notar que (excepto `showBalance()`) reciben parametros. Cuando se hace la invocación/llamada a estos métodos, lo que esta sucediendo, es que al pasar los parámetros en la invocación, si se *pasa* un valor primitivo, lo que en realidad se está utilizando, son los valores asignados a dichos parámetros, es decir se está haciendo un "*paso por valor*". Pero cuando estamos pasando como valor un tipo de dato "*compuesto*" (un array, un objeto), lo que se está utilizando es la referencia a ese dato, lo que se conoce como "*paso por referencia*".  
+
+De nuestra práctica, si observamos los métodos `withdrawal()` y `deposit()`, los parámetros utilizados estan siendo pasados "*por valor*", pero para el caso del método `transferFunds()`, recibe dos parámetros, uno primitivo (paso por valor) y uno "*compuesto*", en este caso, haciendo uso del "*paso por referencia*", ya que el dato referecniado es un *objeto*.  
+
+Para visualizar un poco mejor esto, podemos hacer referencia a que cada variable declarada es como crear una *caja*, a la que se le asigna una etiqueta (nombre de la variable) y a dicha variable se le asigna un valor, que se guardará "*dentro*" de dicha caja. Ahora bien, si el valor asignado a la variable es de tipo primitivo y es utilizado en algún punto de nuestro programa, lo que hace JavaScript es acceder al "*valor almacenado dentro de la caja*" (paso por valor). Pero si el tipo de dato almacenado en la variable es "*compuesto*", al hacer invocado un valor dentro de dicha variable, lo que hace JavaScript es "*pasar la caja entera*" (paso por referencia) para acceder al valor solicitado.  
+
+Lo anterior puede tener sus ventajas y desventajas. Por ejemplo, veamos el método `transferFunds()`, que recibe como segundo parámetro un objeto (la cuenta de destino). Como ya se detalló anteriormente, este método recibirá el objeto completo, por lo que si no se tiene cuidado, dentro del métod `transferFunds()` podemos realizar modificaciones no deseadas a dicho objeto, por ejemplo: si se añade la siguiente línea de código `destinationAccount.city = "California"`, sucederá que se añadirá la propiedad `city` con el valor `California` al objeto pasado como parámetro. Esto muy seguramente será algo que no queremos que pase, por lo que es altamente recomendable poner especial atención en este comportamiento de los tipos de dtaos en los parámetros utilizados.
+
+Para el caso del "*paso por valor*", tomaremos el ejemplo anterior, y para el parámetro `amount`, si le asignamos un nuevo valor a `amuont` dentro del propio método, esto **no** resultara en la reasignación de dicho valor al parámetro original.  
+
 <br>
 
 ---
 ## 04 - Accediendo a atributos privados
 
 ...  
+
 <br>
 
 ---
