@@ -290,7 +290,7 @@ constructor() {
   // ...
 }
 ```
-Observa que al atributo `this.customer` se le asigna el valor de `null`, esto para indicarle a JavaScript que este atributo va a ser un tipo de dato compuesto, específicamente un objeto.  
+Observa que al atributo `this.customer` se le asigna el valor de `null`, esto para indicarle a JavaScript que este atributo va a ser un tipo de dato complejo, específicamente un objeto.  
 
 ### Agregar métodos interactivos
 
@@ -305,26 +305,64 @@ Como reto, puedes agregar la lógica para validar que se haga el depósito a la 
 
 ### Parámetros por valor y por referencia
 
-Dentro de los métodos que definimos en nuestra clase `Account`, podemo notar que (excepto `showBalance()`) reciben parametros. Cuando se hace la invocación/llamada a estos métodos, lo que esta sucediendo, es que al pasar los parámetros en la invocación, si se *pasa* un valor primitivo, lo que en realidad se está utilizando, son los valores asignados a dichos parámetros, es decir se está haciendo un "*paso por valor*". Pero cuando estamos pasando como valor un tipo de dato "*compuesto*" (un array, un objeto), lo que se está utilizando es la referencia a ese dato, lo que se conoce como "*paso por referencia*".  
+Dentro de los métodos que definimos en nuestra clase `Account`, podemo notar que (excepto `showBalance()`) reciben parametros. Cuando se hace la invocación/llamada a estos métodos, lo que esta sucediendo, es que al pasar los parámetros en la invocación, si se *pasa* un valor primitivo, lo que en realidad se está utilizando, son los valores asignados a dichos parámetros, es decir se está haciendo un "*paso por valor*". Pero cuando estamos pasando como valor un tipo de dato "*complejo*" (un array, un objeto), lo que se está utilizando es la referencia a ese dato, lo que se conoce como "*paso por referencia*".  
 
-De nuestra práctica, si observamos los métodos `withdrawal()` y `deposit()`, los parámetros utilizados estan siendo pasados "*por valor*", pero para el caso del método `transferFunds()`, recibe dos parámetros, uno primitivo (paso por valor) y uno "*compuesto*", en este caso, haciendo uso del "*paso por referencia*", ya que el dato referecniado es un *objeto*.  
+De nuestra práctica, si observamos los métodos `withdrawal()` y `deposit()`, los parámetros utilizados estan siendo pasados "*por valor*", pero para el caso del método `transferFunds()`, recibe dos parámetros, uno primitivo (paso por valor) y uno "*complejo*", en este caso, haciendo uso del "*paso por referencia*", ya que el dato referecniado es un *objeto*.  
 
-Para visualizar un poco mejor esto, podemos hacer referencia a que cada variable declarada es como crear una *caja*, a la que se le asigna una etiqueta (nombre de la variable) y a dicha variable se le asigna un valor, que se guardará "*dentro*" de dicha caja. Ahora bien, si el valor asignado a la variable es de tipo primitivo y es utilizado en algún punto de nuestro programa, lo que hace JavaScript es acceder al "*valor almacenado dentro de la caja*" (paso por valor). Pero si el tipo de dato almacenado en la variable es "*compuesto*", al hacer invocado un valor dentro de dicha variable, lo que hace JavaScript es "*pasar la caja entera*" (paso por referencia) para acceder al valor solicitado.  
+Para visualizar un poco mejor esto, podemos hacer referencia a que cada variable declarada es como crear una *caja*, a la que se le asigna una etiqueta (nombre de la variable) y a dicha variable se le asigna un valor, que se guardará "*dentro*" de dicha caja. Ahora bien, si el valor asignado a la variable es de tipo primitivo y es utilizado en algún punto de nuestro programa, lo que hace JavaScript es acceder al "*valor almacenado dentro de la caja*" (paso por valor). Pero si el tipo de dato almacenado en la variable es "*complejo*", al hacer invocado un valor dentro de dicha variable, lo que hace JavaScript es "*pasar la caja entera*" (paso por referencia) para acceder al valor solicitado.  
 
 Lo anterior puede tener sus ventajas y desventajas. Por ejemplo, veamos el método `transferFunds()`, que recibe como segundo parámetro un objeto (la cuenta de destino). Como ya se detalló anteriormente, este método recibirá el objeto completo, por lo que si no se tiene cuidado, dentro del métod `transferFunds()` podemos realizar modificaciones no deseadas a dicho objeto, por ejemplo: si se añade la siguiente línea de código `destinationAccount.city = "California"`, sucederá que se añadirá la propiedad `city` con el valor `California` al objeto pasado como parámetro. Esto muy seguramente será algo que no queremos que pase, por lo que es altamente recomendable poner especial atención en este comportamiento de los tipos de dtaos en los parámetros utilizados.
 
-Para el caso del "*paso por valor*", tomaremos el ejemplo anterior, y para el parámetro `amount`, si le asignamos un nuevo valor a `amuont` dentro del propio método, esto **no** resultara en la reasignación de dicho valor al parámetro original.  
+Para el caso del "*paso por valor*", tomaremos el ejemplo anterior, y para el parámetro `amount`, si le asignamos un nuevo valor a `amuont` dentro del propio método, esto **no** resultará en la reasignación de dicho valor al parámetro original.  
 
 <br>
 
 ---
-## 04 - Accediendo a atributos privados
+## 04 - Accediendo a atributos privados  
 
-...  
+### Valores `null` y `undefined`
+
+* `null` Hace referencia al *uso* de una variable pero que no se ha definido previamente.
+* `undefined` Se refiere a la definición de una variable, pero que tiene un valor *nulo*, no establecido.
+
+Lo anterior puede utilizarse de forma correcta para definir variables que inicialmente no sabemos o no se nos ha especificado el valor que se le asignará, por lo que se recomienda hacer uso de la palabra reservada `null` y de esta forma declarar nuestra variable, pero con un valor `null`, evitando así el uso de variables no definidas y tener errores por ello en nuestro código.  
+
+### Establecer (`set`) y obtener (`get`) valores de atributos privados  
+
+Como ya hemos visto, la definición de atributos privados de una clase, ayuda a restringir el acceso a dicho aributo desde el exterior de la clase. Para nuestro ejemplo de práctica, definimos como privado el atributo `balance` y para poder tener acceso a este atributo, definimos dos métodos (`withdrawal()` y `deposit()`) para poder modificarlo. Esto se puede hacer de forma sencilla debido a que el valor asignado a este taributo es de tipo primitivo y puede ser ya sea un `number` o `float`. Pero para el caso de tipo de datos compuestos, existen las palabras reservadas `set` y `get`, las cuales nos ayudaran a acceder a estos parámetros privados y establecerles un valor o acceder a un determinado valor.  
+
+Siguiendo con el ejemplo de nuestra práctica, la estructura de la clase `Account` quedaría de la siguiente forma:
+```js
+export class Account {
+  #customer
+  // ...
+
+  set setCustomer(obj) {
+    this.#customer = obj
+  }
+
+  get getCustomer () {
+    return this.#customer
+  }
+
+  // ...
+}
+```
+La implementacion de `set` y `get` nos puede ser de mucha utilidad, ya que como se detalló en secciones anteriores, cuando un método recibie como parámetro un objeto, este puede ser modificado intencionalmente o no, por lo que mediante el uso de `set`, podemos establecer determinadas restricciones que evaluen ciertos criterios para permitir que se asigne o no un valor al atributo en cuestión. Para ver esto un poco más a detalle, definiremos una restrcción al `set` que previamente definimos:
+```js
+set setCustomer(obj) {
+  if(obj instanceof Customer) {
+    this.#customer = obj
+  } else {
+    console.error("El valor asignado no es válido, revisa los datos ingresados...")
+  }
+}
+```
+La aplicación de los ajercicios de `set` y `get` los puedes revisar desde [aquí](./set_and_get/)  
 
 <br>
 
 ---
-## 05 - Consturctore y atributos estáticos
+## 05 - Constructores y atributos estáticos
 
 ...  

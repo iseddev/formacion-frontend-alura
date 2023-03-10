@@ -1,18 +1,32 @@
+import { Customer } from "./Customer.js"
+
 export class Account {
-  customer
+  #customer
   number
   #balance // Definimos que balance es un atributo privado
   branch
 
+  set setCustomer(obj) {
+    if(obj instanceof Customer) {
+      this.#customer = obj
+    } else {
+      console.error("El valor asignado no es válido, revisa los datos ingresados...")
+    }
+  }
+
+  get getCustomer () {
+    return this.#customer
+  }
+
   constructor() {
-    this.customer = null
+    this.#customer = null
     this.number = ""
     this.#balance = 0
     this.branch = ""
   }
 
   withdrawal(amount) {
-    console.log(`Retiro de $${amount} desde la cuenta de ${this.customer.name}`)
+    console.log(`Retiro de $${amount} desde la cuenta de ${this.#customer.name}`)
     if(this.#balance >= amount) {
       this.#balance -= amount
       return this.#balance
@@ -23,7 +37,7 @@ export class Account {
   }
 
   deposit(amount) {
-    console.log(`Deposito de $${amount} a la cuenta de ${this.customer.name}`)
+    console.log(`Deposito de $${amount} a la cuenta de ${this.#customer.name}`)
     amount > 0
       ? this.#balance += amount
       : console.error(`ERROR!!! ${amount} NO es válido, ingresa un importe válido`)
@@ -31,7 +45,7 @@ export class Account {
   }
 
   showBalance() {
-    return `El balance actual en la cuenta de ${this.customer.name} es: $${this.#balance}`
+    return `El balance actual en la cuenta de ${this.#customer.name} es: $${this.#balance}`
   }
 
   transferFunds(amount, destination) {
