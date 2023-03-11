@@ -5,6 +5,15 @@ export class Account {
   number
   #balance // Definimos que balance es un atributo privado
   branch
+  static accountNumbers = 0
+
+  constructor(customer, number, branch) {
+    this.setCustomer = customer
+    this.number = number
+    this.branch = branch
+    this.#balance = 0
+    Account.accountNumbers++
+  }
 
   set setCustomer(obj) {
     if(obj instanceof Customer) {
@@ -18,12 +27,6 @@ export class Account {
     return this.#customer
   }
 
-  constructor() {
-    this.#customer = null
-    this.number = ""
-    this.#balance = 0
-    this.branch = ""
-  }
 
   withdrawal(amount) {
     console.log(`Retiro de $${amount} desde la cuenta de ${this.#customer.name}`)

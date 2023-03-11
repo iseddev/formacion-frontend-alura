@@ -323,7 +323,7 @@ Para el caso del "*paso por valor*", tomaremos el ejemplo anterior, y para el pa
 ### Valores `null` y `undefined`
 
 * `null` Hace referencia al *uso* de una variable pero que no se ha definido previamente.
-* `undefined` Se refiere a la definición de una variable, pero que tiene un valor *nulo*, no establecido.
+* `undefined` Se refiere a la definición de una variable, pero que se le asigna un valor *nulo*, no establecido.
 
 Lo anterior puede utilizarse de forma correcta para definir variables que inicialmente no sabemos o no se nos ha especificado el valor que se le asignará, por lo que se recomienda hacer uso de la palabra reservada `null` y de esta forma declarar nuestra variable, pero con un valor `null`, evitando así el uso de variables no definidas y tener errores por ello en nuestro código.  
 
@@ -365,4 +365,125 @@ La aplicación de los ajercicios de `set` y `get` los puedes revisar desde [aqu�
 ---
 ## 05 - Constructores y atributos estáticos
 
+### Constructores
+
+Un *constructor* es una función que se define con la palabra reservada `constructor` y que será ejecutada en cada instanciación de la clase que la contiene, es decir, al definir un objeto que se crea a partir de una clase que contiene definido en su interior esta función constructora.  
+
+Haciendo referencia a nuestra práctica, podemos observar que a la clase `Customer` no se le ha definido un constructor, por lo que vamos a trabajar sobre esta clase para poder ejemplificar la declaración de un costructor y su implementación al crear un objeto a partir de esta clase.
+```js
+class Customer {
+  name
+  dni
+  rfc
+
+  constructor(name, dni, rfc) {
+    this.name = name
+    this.dni = dni
+    this.rfc = rfc
+  }
+}
+```
+Esto ayudará a que en la definición de un objeto, se simplifique el proceso de establecer los valores de cada atributo, por lo que para la creación de un objeto instanciado de la clase `Customer`, tenemod que pasra como parámetros los valores esperados de cada atributo, esto es:
+```js
+const customerOne = new Customer("John", "17652037", "AAAA0000000A0")
+```
+Reduciendo así las líneas de código implementadas y haciendo nuestro programa un tanto más legible. Como reto, puedes intentar actualizar el contructor de la clase `Account`. La instanciación de un objeto hacia estas dos clases, puede quedar de la siguiente  manera:
+```js
+const john = new Customer("John", "17652037", "AAAA0000000A0")
+const johnsAccount = new Account(john, "19237493649", "001")
+```
+Para la clase  `Customer`, podemos tener una estructura similar a esta:
+```js
+export class Customer {
+  name
+  dni
+  rfc
+
+  constructor(name, dni, rfc) {
+    this.name = name
+    this.dni = dni
+    this.rfc = rfc
+  }
+}
+```
+Y para la clase `Account`, esta puede ser su estructura:
+```js
+export class Account {
+  #customer
+  number
+  branch
+  #balance // Definimos que balance es un atributo privado
+  
+  constructor(customer, number, branch) {
+    this.setCustomer = customer
+    this.number = number
+    this.branch = branch
+    this.#balance = 0
+  }
+
+  set setCustomer(obj) {
+    if(obj instanceof Customer) {
+      this.#customer = obj
+    } else {
+      console.error("El valor asignado no es válido, revisa los datos ingresados...")
+    }
+  }
+
+  get getCustomer () {
+    return this.#customer
+  }
+
+
+  withdrawal(amount) {
+    console.log(`Retiro de $${amount} desde la cuenta de ${this.#customer.name}`)
+    if(this.#balance >= amount) {
+      this.#balance -= amount
+      return this.#balance
+    } else {
+      console.error(`ERROR!!! El saldo disponible (${this.#balance}) supera el monto de retiro (${amount})`)
+      return false
+    }
+  }
+
+  deposit(amount) {
+    console.log(`Deposito de $${amount} a la cuenta de ${this.#customer.name}`)
+    amount > 0
+      ? this.#balance += amount
+      : console.error(`ERROR!!! ${amount} NO es válido, ingresa un importe válido`)
+    return this.#balance
+  }
+
+  showBalance() {
+    return `El balance actual en la cuenta de ${this.#customer.name} es: $${this.#balance}`
+  }
+
+  transferFunds(amount, destination) {
+    const isValidTransfer = this.withdrawal(amount)
+    if(isValidTransfer) {
+      destination.deposit(amount)
+    } else {
+      console.error(`No fue posible realizar la transferencia solicitada, favor de revisar información ingresada`)
+    }
+  }
+}
+```
+
+### Atributos estáticos
+
+Los atributos estáticos son elementos que van a ser compartidos entre todas las instancias (objetos) creadas a partir de una clase. Por ejemplo: Vamos a suponer que de nuestra práctica, necesitamos saber la cantidad de cuentas que han sido generadas hasta el momento, para ello vamos a hacer uso de un atributo estático, y para su creación tenemos que utilizar la palabra reservada `static`, esto creará un atributo estático dentro de la clase, la cual tenemos que integrarla al constructor de la clase para que sea utilizada en cada instanciación solicitada, esto es:
+```js
+export class Account {
+
+  // ...
+  static accountNumbers = 0
+  
+  constructor("...") {
+    // ...
+    Account.accountNumbers++
+  }
+
+  // ...
+}
+```
+La aplicación de estos ejercicios estan detallados en la carpeta de la práctica [aquí](./set_and_get/)
 ...  

@@ -3,9 +3,9 @@ export class Customer {
   dni
   rfc
 
-  constructor() {
-    this.name = ""
-    this.dni = ""
-    this.rfc = ""
+  constructor(name, dni, rfc) {
+    this.name = name
+    this.dni = dni
+    this.rfc = rfc
   }
 }
