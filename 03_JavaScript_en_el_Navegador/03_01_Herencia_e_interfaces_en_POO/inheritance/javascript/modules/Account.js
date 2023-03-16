@@ -1,17 +1,22 @@
-export class CommonAccount {
+export class Account {
   #customer
   #balance
 
-  constructor(customer, balance, number, branch) {
+  constructor(customer, number, branch, balance) {
+    this.#customer = customer
     this.number = number
     this.branch = branch
-    this.#customer = customer
     this.#balance = balance
   }
 
-  withdrawal(amount) {
-    console.log(`Retiro de $${amount} desde la cuenta de ${this.#customer.name}`)
+  withdrawal(amount, fee) {
+    _withdrawal(amount, 0)
+  }
+  
+  _withdrawal(amount, fee) {
+    amount *= fee / 100 + 1
     if(this.#balance >= amount) {
+      console.log(`Retiro de $${amount} de la cuenta de ${this.#customer.name}`)
       this.#balance -= amount
       return this.#balance
     } else {
