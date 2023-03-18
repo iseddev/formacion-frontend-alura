@@ -299,3 +299,83 @@ withdrawal(amount) {
 }
 // ...
 ```
+
+### Polimorfismo
+
+Polimorfismo es un concepto de la POO donde es posible utilizar las funciones y/o atributtos de una o más clases en diferentes formas y lugares en otras clases. En nuestro ejemplo, creamos la clase `Autentication`, que se utilizará para validar el password de un usuario es correcta o no, esto lo vamos a poder aplicar para cualquier tipo de usuario, en nuestro caso sólo tenemos dos por el momento, ya sea un `Employee` o un `Customer`.  
+
+En `Autentication` vamos a definir un método estático para su implementación directa sin tener que instanciar un objeto de esta misma clase. El comportamiento de esto lo vammos a ver en la clase `Employee`, por lo que vanos a implementar los `getters` y `setters` para el manejo de las contraseñas, por lo que la estrcutura de dichas clase quedaría como sigue:
+```js
+// Autentication.js
+export class Autentication {
+  static checkPassword (user, password) {
+    return user.getPassword === password
+  }
+}
+
+// Employee.js
+// ...
+#password
+
+constructor(name, dni, salary) {
+  // ...
+  this.#password = null
+}
+
+// ...
+
+set setPassword(password) {
+  this.#password = password
+}
+
+get getPassword() {
+  return this.#password
+}
+```
+Los archivos trabajados los puedes revisar [aquí](./polymorphism/)  
+
+Como reto, intenta implementar la validación de la contraseñas para el resto de las clases.
+
+### Interfaces
+
+Una interfaz en la POO con JavaScript se refiere a los atributo y/o métodos que se encuentran en diferentes clases sin que éstas tengan relación alguna, por ejemplo, de nuestra práctica, asignamos las métodos de asignación de password tanto para la clase `Customer` como para la clase `Employee`, por lo que el atributo `password` funciona como una interfaz que sirve como puente para la rlación con el método `checkPassword()` de la clase `Autentication`. Por otro lado, también puede haber interfaces aplicados a métodos.  
+
+Siguiendo con nuestra práctica, vamos a cambiar la verificación del password de un usuario por una verificación mediante un método que funcionará como interfaz entre cada clase que contenga `password` como uno de sus atributos.
+```js
+// Authentication.js
+export class Autentication {
+  static checkPassword (user, password) {
+    return user.isAuthenticable(password)
+  }
+}
+
+// Customer.js
+// ...
+isAuthenticable(password) {
+  return password === this.#password
+}
+
+// Epmloyee.js
+// ...
+isAuthenticable(password) {
+  return password === this.#password
+}
+
+```
+
+### Validando tipos atributos y/o métodos
+
+vamos adefinir una condición que evalue si dentro del objeto recibido en `Authentication.js` tiene el método `isAuthenticable()` para ayudar a minimizar el impacto o rompimiento de nuestro código cuando por alguna razón, el objeto instanciado no cuente con éste método. Esto lo podemos implementar de la siguiente manera:
+```js
+// Authentication.js
+export class Autentication {
+  static checkPassword (user, password) {
+    if("isAuthenticable" in user && user.isAuthenticable instanceof Function)
+      return user.isAuthenticable(password)
+    else
+      return false
+  }
+}
+```
+
+Hasta aquí el curso, gracias por visitar este repositorio...
