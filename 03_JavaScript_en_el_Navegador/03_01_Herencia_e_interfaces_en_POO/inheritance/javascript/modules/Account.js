@@ -3,6 +3,9 @@ export class Account {
   #balance
 
   constructor(customer, number, branch, balance) {
+    if(this.constructor === Account) {
+      throw new Error("Ne se debe instanciar directamente de la claase principal 'Account', crea una nueva clase mediante 'extends' en su lugar...")
+    }
     this.#customer = customer
     this.number = number
     this.branch = branch
@@ -10,7 +13,8 @@ export class Account {
   }
 
   withdrawal(amount, fee) {
-    _withdrawal(amount, 0)
+    // this._withdrawal(amount, 0)
+    throw new Error("Es necesario implementar el método 'witdrawal' directamente en el objeto creado y definir el porcentaje de comisión aplicable al tipo de cuenta...")
   }
   
   _withdrawal(amount, fee) {

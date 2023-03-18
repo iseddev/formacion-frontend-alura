@@ -247,3 +247,55 @@ withdrawal(amount) {
   super._withdrawal(amount, 2)
 }
 ```
+
+### Clases **abstractas**
+
+En el entorno de la POO, existe el concepto de *encapsulación* (también conocido como *abstracción*), que se enfoca en la *protección* de una clase para limitar el acceso y uso externo. Por ejemplo, siguiendo con nuestra práctica, podemos tener acceso a la clase *base/principal* `Account`, lo que no se debería permitir, ya que esta clase tiene por objetivo ser un *molde* general y cualquier modificación que se requierea realizar, debería aplicarse únicamente desde las los objetos creados a partir de la *extención* (uso de la directiva `extends`) de esta clase base y de esta forma limitar (no permitir) la instanciación directa a la clase `Account`, con esto sólo estará permitido realizar modificaciones en las clases `CheckingAccount` y `SavingAccount`, y no se podría instanciar directamente a la clase principal `Account` y por ende no se podrían acceder a sus atributos y métodos para modificarlos, este proceso de *protección* es conocido *encapsulamiento*.  
+
+Ahora vamos a proceder a *encapsular* a nuestra clase principal para que no pueda ser accesada directamente desde el exterior y que solamente sea *extendida* a otras clases secundarias, esto lo podemos lograr mediante el uso de la instrucción `throw new Error()` de la siguiente forma:
+```js
+// Account.js
+// ...
+constructor(customer, number, branch, balance) {
+  if(this.constructor === Account) {
+    throw new Error("Ne se debe instanciar directamente de la claase principal 'Account', crea una nueva clase mediante 'extends' en su lugar...")
+  }
+  this.#customer = customer
+  this.number = number
+  this.branch = branch
+  this.#balance = balance
+}
+// ...
+```
+
+### Métodos **abstractos** de clases
+
+Al igual que podemos proteger una clase principal de ser instanciada directamente, tambien podemos restringir el uso de métodos, aplicando la misma lógica de hacer uso de la instrucción `throw new Error()`, por lo que tendríamos algo como lo siguiente:
+```js
+// Account.js
+// ...
+withdrawal(amount, fee) {
+  // this._withdrawal(amount, 0)
+  throw new Error("Es necesario implementar el método 'witdrawal' directamente en el objeto creado y definir el porcentaje de comisión aplicable al tipo de cuenta...")
+}
+
+_withdrawal(amount, fee) {
+  amount *= fee / 100 + 1
+  if(this.#balance >= amount) {
+    console.log(`Retiro de $${amount} de la cuenta de ${this.#customer.name}`)
+    this.#balance -= amount
+    return this.#balance
+  } else {
+    console.error(`ERROR!!! El saldo disponible (${this.#balance}) supera el monto de retiro (${amount})`)
+    return false
+  }
+}
+// ...
+
+// PayrollAccount.js
+// ...
+withdrawal(amount) {
+  super._withdrawal(amount, 3)
+}
+// ...
+```
