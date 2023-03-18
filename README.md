@@ -7,4 +7,4 @@ Accede a cada sección en los siguientes enllaces:
 
 1. [Formación Frontend/UI](01_FrontendUI)
 2. [Formación JavaScript](02_JavaScript)
-<!-- 3. [Formación JavaScript en el navegador](03_JavaScript_en_el_Navegador) -->
+3. [Formación JavaScript en el navegador](03_JavaScript_en_el_Navegador)
